@@ -14,8 +14,8 @@ $[I].30Sep2014-2242.json <- $[I].csv, $[I].30Sep2014-2242 [shell]
   cat $INPUT1 $INPUT2 | csvjson > $OUTPUT
 
 $[I].30Sep2014-2316.czml <- $[I].30Sep2014-2316.json [shell]
-  jq '[{"id":"document","version":"1.0"},{"id":"Vehicle","path":{"material":{"solidColor":{"color":{"rgba":[255,0,0,255]}}},"width":5.0,"show":true},"position":{"cartesianGeographic":[.[] | .TimeStamp+"Z", .Latitude, .Longitude, .GPS_Altitude]}}]' < $INPUT > $OUTPUT
+  jq '[{"id":"document","version":"1.0"},{"id":"Vehicle","path":{"material":{"solidColor":{"color":{"rgba":[255,0,0,255]}}},"width":5.0,"show":true},"position":{"cartesianGeographic":[.[] | .TimeStamp+"Z", (.Latitude | tonumber), (.Longitude | tonumber), (.GPS_Altitude | tonumber)]}}]' < $INPUT > $OUTPUT
 
 $[I].30Sep2014-2242.czml <- $[I].30Sep2014-2242.json [shell]
-  jq '[{"id":"document","version":"1.0"},{"id":"Vehicle","path":{"material":{"solidColor":{"color":{"rgba":[255,0,0,255]}}},"width":5.0,"show":true},"position":{"cartesianGeographic":[.[] | .TimeStamp+"Z", .Latitude, .Longitude, .GPS_Altitude]}}]' < $INPUT > $OUTPUT
+  jq '[{"id":"document","version":"1.0"},{"id":"Vehicle","path":{"material":{"solidColor":{"color":{"rgba":[255,0,0,255]}}},"width":5.0,"show":true},"position":{"cartesianGeographic":[.[] | .TimeStamp+"Z", (.Latitude | tonumber), (.Longitude | tonumber), (.GPS_Altitude | tonumber)]}}]' < $INPUT > $OUTPUT
 
